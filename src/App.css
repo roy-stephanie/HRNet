@@ -1,0 +1,210 @@
+.custom {
+  background: #FFF;
+  border-radius: 15px;
+  border: 1px #737373 solid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.text-color {
+  color: darkblue;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 10px;
+  border-bottom: 1px gray solid;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.header ul {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;;
+}
+
+.header a:not(.active) {
+  color: black;
+}
+
+.header a:hover {
+  color: #0065b5;
+}
+
+.active {
+  color: #0087f1;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 10px auto 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.form-address {
+  border: 1px #cccccc solid;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: #878787;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #494949;
+}
+
+.table-container {
+  margin: 0 2px;
+}
+
+.search-input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-row {
+  background-color: #f4f4f4;
+}
+
+.header-cell.sortable {
+  cursor: pointer;
+}
+
+.header-cell.sortable:hover {
+  background-color: #e0e0e0;
+}
+
+.body-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.body-cell {
+  padding: 10px;
+}
+
+.body-cell:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination-controls {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-controls div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-stats {
+  display: flex;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.pagination-controls select {
+  width: 30%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Masquer toutes les colonnes par défaut */
+.employee-table .col-first-name,
+.employee-table .col-last-name,
+.employee-table .col-start-date,
+.employee-table .col-department {
+  display: table-cell;
+}
+
+.employee-table .col-date-of-birth,
+.employee-table .col-street,
+.employee-table .col-city,
+.employee-table .col-state,
+.employee-table .col-zip-code {
+  display: none;
+}
+
+/* Afficher toutes les colonnes sur les écrans larges */
+@media (min-width: 768px) {
+  .employee-table .col-date-of-birth,
+  .employee-table .col-street,
+  .employee-table .col-city,
+  .employee-table .col-state,
+  .employee-table .col-zip-code {
+    display: table-cell;
+  }
+  .pagination-controls select {
+    width: 20%;
+  }
+  .table-container {
+    margin: 0 20px;
+  }
+}
