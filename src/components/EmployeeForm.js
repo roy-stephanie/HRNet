@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {useForm} from '@tanstack/react-form';
-import {useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { useForm } from '@tanstack/react-form';
+import { useDispatch } from 'react-redux';
 import cities from './cities';
 import departments from './departments';
-import {addEmployee} from '../store/employeesSlice';
-import {Modal} from "react-light-dialog-modal";
+import { addEmployee } from '../store/employeesSlice';
+import { Modal } from "react-light-dialog-modal";
 import useWindowWidth from "../hooks/useWindowWidth";
 
 /**
@@ -44,7 +44,7 @@ const EmployeeForm = () => {
       },
       department: 'Sales',
     },
-    onSubmit: async ({value}) => {
+    onSubmit: async ({ value }) => {
       console.log('Form Values:', value);
       dispatch(addEmployee(value));  // Dispatch form values to the Redux store
       openModal(); // Open the modal to confirm employee creation
@@ -52,204 +52,233 @@ const EmployeeForm = () => {
   });
 
   return (
-    <div>
-      <Modal id={"modal1"} isOpen={isModalOpen} onClose={closeModal} size={modalSize} className="custom">Employee Created !</Modal>
-      <h1 className="section-title">Create Employee</h1>
-      <div className="form-container">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            form.handleSubmit(); // Trigger form submission
-          }}
-        >
-          {/* First Name Field */}
-          <div className="form-group">
-            <form.Field
-              name="firstName"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>First Name</label>
-                  <input
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
+    <div className="container mt-5 d-flex justify-content-center">
+      <Modal id={"modal1"} isOpen={isModalOpen} onClose={closeModal} size={modalSize} className="custom">
+        Employee Created!
+      </Modal>
+      <div className="card shadow-sm" style={{ maxWidth: '600px', width: '100%' }}>
+        <div className="card-body">
+          <h1 className="section-title text-center mb-4">Create Employee</h1>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              form.handleSubmit(); // Trigger form submission
+            }}
+          >
+            <div className="row mb-3">
+              {/* First Name Field */}
+              <div className="col-md-6">
+                <form.Field
+                  name="firstName"
+                  children={(field) => (
+                    <>
+                      <label htmlFor={field.name} className="form-label">First Name</label>
+                      <input
+                        id={field.name}
+                        className="form-control rounded-pill"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                    </>
+                  )}
+                />
+              </div>
+
+              {/* Last Name Field */}
+              <div className="col-md-6">
+                <form.Field
+                  name="lastName"
+                  children={(field) => (
+                    <>
+                      <label htmlFor={field.name} className="form-label">Last Name</label>
+                      <input
+                        id={field.name}
+                        className="form-control rounded-pill"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              {/* Date of Birth Field */}
+              <div className="col-md-6">
+                <form.Field
+                  name="dateOfBirth"
+                  children={(field) => (
+                    <>
+                      <label htmlFor={field.name} className="form-label">Date of Birth</label>
+                      <input
+                        type="date"
+                        id={field.name}
+                        className="form-control rounded-pill"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                    </>
+                  )}
+                />
+              </div>
+
+              {/* Start Date Field */}
+              <div className="col-md-6">
+                <form.Field
+                  name="startDate"
+                  children={(field) => (
+                    <>
+                      <label htmlFor={field.name} className="form-label">Start Date</label>
+                      <input
+                        type="date"
+                        id={field.name}
+                        className="form-control rounded-pill"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        required
+                      />
+                    </>
+                  )}
+                />
+              </div>
+            </div>
+
+            {/* Address Fieldset */}
+            <fieldset className="form-group form-address mb-3">
+              <legend className="fw-bold">Address</legend>
+
+              <div className="row mb-3">
+                {/* Street Field */}
+                <div className="col-md-12">
+                  <form.Field
+                    name="address.street"
+                    children={(field) => (
+                      <>
+                        <label htmlFor={field.name} className="form-label">Street</label>
+                        <input
+                          id={field.name}
+                          className="form-control rounded-pill"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          required
+                        />
+                      </>
+                    )}
                   />
-                </>
-              )}
-            />
-          </div>
+                </div>
+              </div>
 
-          {/* Last Name Field */}
-          <div className="form-group">
-            <form.Field
-              name="lastName"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Last Name</label>
-                  <input
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
+              <div className="row mb-3">
+                {/* City Field */}
+                <div className="col-md-6">
+                  <form.Field
+                    name="address.city"
+                    children={(field) => (
+                      <>
+                        <label htmlFor={field.name} className="form-label">City</label>
+                        <input
+                          id={field.name}
+                          className="form-control rounded-pill"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          required
+                        />
+                      </>
+                    )}
                   />
-                </>
-              )}
-            />
-          </div>
+                </div>
 
-          {/* Date of Birth Field */}
-          <div className="form-group">
-            <form.Field
-              name="dateOfBirth"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Date of Birth</label>
-                  <input
-                    type="date"
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
+                {/* State Field */}
+                <div className="col-md-6">
+                  <form.Field
+                    name="address.state"
+                    children={(field) => (
+                      <>
+                        <label htmlFor={field.name} className="form-label">State</label>
+                        <select
+                          id={field.name}
+                          className="form-select rounded-pill"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          required
+                        >
+                          {cities.map((city, index) => (
+                            <option key={index} value={city}>
+                              {city}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    )}
                   />
-                </>
-              )}
-            />
-          </div>
+                </div>
+              </div>
 
-          {/* Start Date Field */}
-          <div className="form-group">
-            <form.Field
-              name="startDate"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Start Date</label>
-                  <input
-                    type="date"
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
+              <div className="row mb-3">
+                {/* Zip Code Field */}
+                <div className="col-md-6">
+                  <form.Field
+                    name="address.zipCode"
+                    children={(field) => (
+                      <>
+                        <label htmlFor={field.name} className="form-label">Zip Code</label>
+                        <input
+                          id={field.name}
+                          className="form-control rounded-pill"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          required
+                        />
+                      </>
+                    )}
                   />
-                </>
-              )}
-            />
-          </div>
+                </div>
+              </div>
+            </fieldset>
 
-          {/* Address Fieldset */}
-          <fieldset className="form-group form-address">
-            <legend>Address</legend>
+            {/* Department Field */}
+            <div className="mb-3">
+              <form.Field
+                name="department"
+                children={(field) => (
+                  <>
+                    <label htmlFor={field.name} className="form-label">Department</label>
+                    <select
+                      id={field.name}
+                      className="form-select rounded-pill"
+                      value={field.state.value}
+                      onBlur={field.handleBlur}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      required
+                    >
+                      {departments.map((department, index) => (
+                        <option key={index} value={department}>
+                          {department}
+                        </option>
+                      ))}
+                    </select>
+                  </>
+                )}
+              />
+            </div>
 
-            {/* Street Field */}
-            <form.Field
-              name="address.street"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Street</label>
-                  <input
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
-                  />
-                </>
-              )}
-            />
-
-            {/* City Field */}
-            <form.Field
-              name="address.city"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>City</label>
-                  <input
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
-                  />
-                </>
-              )}
-            />
-
-            {/* State Field */}
-            <form.Field
-              name="address.state"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>State</label>
-                  <select
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
-                  >
-                    {cities.map((city, index) => (
-                      <option key={index} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
-                </>
-              )}
-            />
-
-            {/* Zip Code Field */}
-            <form.Field
-              name="address.zipCode"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Zip Code</label>
-                  <input
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
-                  />
-                </>
-              )}
-            />
-          </fieldset>
-
-          {/* Department Field */}
-          <div className="form-group">
-            <form.Field
-              name="department"
-              children={(field) => (
-                <>
-                  <label htmlFor={field.name}>Department</label>
-                  <select
-                    id={field.name}
-                    value={field.state.value}
-                    onBlur={field.handleBlur}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    required
-                  >
-                    {departments.map((department, index) => (
-                      <option key={index} value={department}>
-                        {department}
-                      </option>
-                    ))}
-                  </select>
-                </>
-              )}
-            />
-          </div>
-
-          {/* Submit Button */}
-          <button type="submit" className="btn">
-            Save
-          </button>
-        </form>
+            {/* Submit Button */}
+            <button type="submit" className="btn btn-primary rounded-pill w-100">Save</button>
+          </form>
+        </div>
       </div>
     </div>
   );

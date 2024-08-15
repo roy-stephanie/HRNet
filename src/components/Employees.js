@@ -76,52 +76,55 @@ function EmployeeTable() {
         placeholder="Search..."
         value={globalFilter ?? ''}
         onChange={(e) => setGlobalFilter(e.target.value)}
-        className="search-input"
+        className="form-control mb-3"
       />
 
       {/* Employee table */}
-      <table className="employee-table">
-        <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id} className="header-row">
-            {headerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                onClick={header.column.getToggleSortingHandler()}
-                className={`header-cell sortable ${header.column.columnDef.className}`}
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                {header.column.getIsSorted() &&
-                  (header.column.getIsSorted() === 'asc'
-                    ? ' 🔼'
-                    : ' 🔽')}
-              </th>
-            ))}
-          </tr>
-        ))}
-        </thead>
-        <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id} className="body-row">
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className={`body-cell ${cell.column.columnDef.className}`}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-        </tbody>
-      </table>
+      <div className="table-responsive">
+        <table className="table table-striped table-hover">
+          <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id} className="header-row">
+              {headerGroup.headers.map((header) => (
+                <th
+                  key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
+                  className={`header-cell sortable ${header.column.columnDef.className}`}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  {header.column.getIsSorted() &&
+                    (header.column.getIsSorted() === 'asc'
+                      ? ' 🔼'
+                      : ' 🔽')}
+                </th>
+              ))}
+            </tr>
+          ))}
+          </thead>
+          <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id} className="body-row">
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id} className={`body-cell ${cell.column.columnDef.className}`}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Pagination controls */}
-      <div className="pagination-controls">
+      <div className="d-flex justify-content-between align-items-center mt-3">
         <div>
           <button
+            className="btn btn-primary me-2"
             onClick={() => {
               table.previousPage();
               setPageIndex((old) => Math.max(old - 1, 0));
@@ -131,6 +134,7 @@ function EmployeeTable() {
             Previous
           </button>
           <button
+            className="btn btn-primary"
             onClick={() => {
               table.nextPage();
               setPageIndex((old) => Math.min(old + 1, table.getPageCount() - 1));
@@ -139,10 +143,10 @@ function EmployeeTable() {
           >
             Next
           </button>
-          <span className="pagination-stats">
-            Page&nbsp;<strong>{pageIndex + 1}&nbsp;/&nbsp;{table.getPageCount()}</strong>
-          </span>
         </div>
+        <span className="pagination-stats">
+          Page&nbsp;<strong>{pageIndex + 1}&nbsp;/&nbsp;{table.getPageCount()}</strong>
+        </span>
         <select
           value={pageSize}
           onChange={(e) => {
@@ -150,6 +154,7 @@ function EmployeeTable() {
             setPageSize(newSize);
             setPageIndex(0);
           }}
+          className="form-select w-auto"
         >
           {[10, 20, 30, 50].map((size) => (
             <option key={size} value={size}>
