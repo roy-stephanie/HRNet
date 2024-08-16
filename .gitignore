@@ -1,5 +1,5 @@
 .idea
-
+/public/_redirects
 # dependencies
 /node_modules
 /.pnp
