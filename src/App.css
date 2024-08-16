@@ -1,4 +1,6 @@
 .custom {
+  display: block !important;
+  height: auto !important;
   background: #FFF;
   border-radius: 15px;
   border: 1px #737373 solid;
@@ -207,4 +209,14 @@ input, select {
   .table-container {
     margin: 0 20px;
   }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 7688px) and (orientation : portrait) {
+  .hide-on-mobile {
+    display: table-cell !important;
+  }
+}
+
+.hide-on-mobile {
+  display: none !important;
 }

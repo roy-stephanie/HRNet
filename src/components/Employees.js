@@ -8,6 +8,7 @@ import {
   flexRender,
 } from '@tanstack/react-table';
 import { useSelector } from 'react-redux';
+import useWindowWidth from "../hooks/useWindowWidth";
 
 /**
  * EmployeeTable component displays a table of employees with pagination, sorting, and filtering functionalities.
@@ -18,6 +19,9 @@ function EmployeeTable() {
   const [globalFilter, setGlobalFilter] = useState('');
   const [pageSize, setPageSize] = useState(10);
   const [pageIndex, setPageIndex] = useState(0);
+  const windowWidth = useWindowWidth();
+
+  const isMobile = windowWidth < 768;
 
   /**
    * Defines the columns for the table, including headers and accessor keys
@@ -27,15 +31,15 @@ function EmployeeTable() {
     () => [
       { header: 'First Name', accessorKey: 'firstName', className: 'col-first-name' },
       { header: 'Last Name', accessorKey: 'lastName', className: 'col-last-name' },
-      { header: 'Start Date', accessorKey: 'startDate', className: 'col-start-date' },
+      { header: 'Start Date', accessorKey: 'startDate', className: isMobile ? 'd-none' : '' }, // Masqué sur mobile
       { header: 'Department', accessorKey: 'department', className: 'col-department' },
-      { header: 'Date of Birth', accessorKey: 'dateOfBirth', className: 'col-date-of-birth' },
+      { header: 'Date of Birth', accessorKey: 'dateOfBirth', className: isMobile ? 'd-none' : '' }, // Masqué sur mobile
       { header: 'Street', accessorKey: 'address.street', className: 'col-street' },
       { header: 'City', accessorKey: 'address.city', className: 'col-city' },
-      { header: 'State', accessorKey: 'address.state', className: 'col-state' },
-      { header: 'Zip Code', accessorKey: 'address.zipCode', className: 'col-zip-code' },
+      { header: 'State', accessorKey: 'address.state', className: isMobile ? 'd-none' : '' }, // Masqué sur mobile
+      { header: 'Zip Code', accessorKey: 'address.zipCode', className: isMobile ? 'd-none' : '' }, // Masqué sur mobile
     ],
-    []
+    [isMobile]
   );
 
   /**

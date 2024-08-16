@@ -52,13 +52,13 @@ const EmployeeForm = () => {
   });
 
   return (
-    <div className="container mt-5 d-flex justify-content-center">
-      <Modal id={"modal1"} isOpen={isModalOpen} onClose={closeModal} size={modalSize} className="custom">
+    <div>
+      <Modal id="Confirmation" className={"custom modal-dialog"} isOpen={isModalOpen} onClose={closeModal} size={modalSize.toString()} ariaDescribedby={"Confirmation"} ariaLabelledby={"Confirmation"}>
         Employee Created!
       </Modal>
-      <div className="card shadow-sm" style={{ maxWidth: '600px', width: '100%' }}>
-        <div className="card-body">
-          <h1 className="section-title text-center mb-4">Create Employee</h1>
+      <div className="container mx-auto">
+        <div>
+          <h1 className="text-center">Create Employee</h1>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -66,17 +66,16 @@ const EmployeeForm = () => {
               form.handleSubmit(); // Trigger form submission
             }}
           >
-            <div className="row mb-3">
+            <div>
               {/* First Name Field */}
-              <div className="col-md-6">
+              <div>
                 <form.Field
                   name="firstName"
                   children={(field) => (
                     <>
-                      <label htmlFor={field.name} className="form-label">First Name</label>
+                      <label htmlFor={field.name}>First Name</label>
                       <input
                         id={field.name}
-                        className="form-control rounded-pill"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
@@ -88,15 +87,14 @@ const EmployeeForm = () => {
               </div>
 
               {/* Last Name Field */}
-              <div className="col-md-6">
+              <div>
                 <form.Field
                   name="lastName"
                   children={(field) => (
                     <>
-                      <label htmlFor={field.name} className="form-label">Last Name</label>
+                      <label htmlFor={field.name}>Last Name</label>
                       <input
                         id={field.name}
-                        className="form-control rounded-pill"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
@@ -108,18 +106,17 @@ const EmployeeForm = () => {
               </div>
             </div>
 
-            <div className="row mb-3">
+            <div>
               {/* Date of Birth Field */}
-              <div className="col-md-6">
+              <div>
                 <form.Field
                   name="dateOfBirth"
                   children={(field) => (
                     <>
-                      <label htmlFor={field.name} className="form-label">Date of Birth</label>
+                      <label htmlFor={field.name}>Date of Birth</label>
                       <input
                         type="date"
                         id={field.name}
-                        className="form-control rounded-pill"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
@@ -131,16 +128,15 @@ const EmployeeForm = () => {
               </div>
 
               {/* Start Date Field */}
-              <div className="col-md-6">
+              <div>
                 <form.Field
                   name="startDate"
                   children={(field) => (
                     <>
-                      <label htmlFor={field.name} className="form-label">Start Date</label>
+                      <label htmlFor={field.name}>Start Date</label>
                       <input
                         type="date"
                         id={field.name}
-                        className="form-control rounded-pill"
                         value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
@@ -153,20 +149,19 @@ const EmployeeForm = () => {
             </div>
 
             {/* Address Fieldset */}
-            <fieldset className="form-group form-address mb-3">
-              <legend className="fw-bold">Address</legend>
+            <fieldset>
+              <legend>Address</legend>
 
-              <div className="row mb-3">
+              <div>
                 {/* Street Field */}
-                <div className="col-md-12">
+                <div>
                   <form.Field
                     name="address.street"
                     children={(field) => (
                       <>
-                        <label htmlFor={field.name} className="form-label">Street</label>
+                        <label htmlFor={field.name}>Street</label>
                         <input
                           id={field.name}
-                          className="form-control rounded-pill"
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
@@ -178,17 +173,16 @@ const EmployeeForm = () => {
                 </div>
               </div>
 
-              <div className="row mb-3">
+              <div>
                 {/* City Field */}
-                <div className="col-md-6">
+                <div>
                   <form.Field
                     name="address.city"
                     children={(field) => (
                       <>
-                        <label htmlFor={field.name} className="form-label">City</label>
+                        <label htmlFor={field.name}>City</label>
                         <input
                           id={field.name}
-                          className="form-control rounded-pill"
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
@@ -200,15 +194,14 @@ const EmployeeForm = () => {
                 </div>
 
                 {/* State Field */}
-                <div className="col-md-6">
+                <div>
                   <form.Field
                     name="address.state"
                     children={(field) => (
                       <>
-                        <label htmlFor={field.name} className="form-label">State</label>
+                        <label htmlFor={field.name}>State</label>
                         <select
                           id={field.name}
-                          className="form-select rounded-pill"
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
@@ -226,17 +219,16 @@ const EmployeeForm = () => {
                 </div>
               </div>
 
-              <div className="row mb-3">
+              <div>
                 {/* Zip Code Field */}
-                <div className="col-md-6">
+                <div>
                   <form.Field
                     name="address.zipCode"
                     children={(field) => (
                       <>
-                        <label htmlFor={field.name} className="form-label">Zip Code</label>
+                        <label htmlFor={field.name}>Zip Code</label>
                         <input
                           id={field.name}
-                          className="form-control rounded-pill"
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
@@ -250,15 +242,14 @@ const EmployeeForm = () => {
             </fieldset>
 
             {/* Department Field */}
-            <div className="mb-3">
+            <div>
               <form.Field
                 name="department"
                 children={(field) => (
                   <>
-                    <label htmlFor={field.name} className="form-label">Department</label>
+                    <label htmlFor={field.name}>Department</label>
                     <select
                       id={field.name}
-                      className="form-select rounded-pill"
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
@@ -276,7 +267,7 @@ const EmployeeForm = () => {
             </div>
 
             {/* Submit Button */}
-            <button type="submit" className="btn btn-primary rounded-pill w-100">Save</button>
+            <button className="btn btn-sm btn-primary mt-2" type="submit">Save</button>
           </form>
         </div>
       </div>
