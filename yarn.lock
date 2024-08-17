@@ -8122,10 +8122,10 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
-react-light-dialog-modal@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-light-dialog-modal/-/react-light-dialog-modal-1.0.8.tgz#389212daca4bedc149bbf9aa429717e37612494c"
-  integrity sha512-CDRCSUxYoOj1oc3DzawTQndgmsGqbJryK/7WyuNvgKmuLYj3rfbzS9Nd+zyqCmafZ1BK1hQ2yIpae9+ZJu92xg==
+react-light-dialog-modal@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-light-dialog-modal/-/react-light-dialog-modal-1.0.9.tgz#924e320f26148ddfbd84c2ba313bd79ef8a9707a"
+  integrity sha512-+ZAYGWSpieDLLcB1edVA72k3OFiNBRbEbM6HMl/qnraK1nwIekcDqecaOy6g94/HPnN+Lc4C0NdNMbhIE7+xsg==
   dependencies:
     prop-types "^15.8.1"
     react-transition-group "^4.4.5"
